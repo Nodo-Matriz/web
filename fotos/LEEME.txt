@@ -1,0 +1,2 @@
+Acá van las fotos de la web (JPG, menos de 500 KB cada una, nombres sin espacios).
+Después hay que listarlas en contenido/fotos.json (ver README.md).
