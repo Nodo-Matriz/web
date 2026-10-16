@@ -2,7 +2,7 @@
 
 Sitio informativo del Nodo. El sistema de la edición (formularios, guía,
 galpón) vive en otro repositorio (`Sistema`) y se sirve en
-`sistema.nodomatriz.ar`.
+`webapp.nodomatriz.ar`.
 
 ## Cómo actualizar el contenido (desde github.com, sin instalar nada)
 
@@ -46,5 +46,5 @@ Si quedan vacíos, los botones no aparecen.
 ## Archivos
 - `index.html`: la página.
 - `404.html`: si alguien entra con un link viejo del sistema
-  (`nodomatriz.ar/forms/...`), lo reenvía a `sistema.nodomatriz.ar`.
+  (`nodomatriz.ar/forms/...`), lo reenvía a `webapp.nodomatriz.ar`.
 - `CNAME`: lo crea GitHub solo al configurar el dominio (`nodomatriz.ar`). No borrarlo.

@@ -7,12 +7,12 @@
   <meta name="robots" content="noindex">
   <script>
     // El sistema de la edición (formularios, guía, galpón) se mudó a
-    // sistema.nodomatriz.ar. Los links viejos (nodomatriz.ar/forms/..., etc.)
+    // webapp.nodomatriz.ar. Los links viejos (nodomatriz.ar/forms/..., etc.)
     // se reenvían solos a la misma dirección en el subdominio, con sus datos.
     (function () {
       var p = location.pathname;
       if (/^\/(forms|templates|assets)\//.test(p) || /^\/flujo-edicion\.html$/.test(p)) {
-        location.replace('https://sistema.nodomatriz.ar' + p + location.search + location.hash);
+        location.replace('https://webapp.nodomatriz.ar' + p + location.search + location.hash);
       }
     })();
   </script>
