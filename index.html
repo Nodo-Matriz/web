@@ -1,384 +1,345 @@
 <!doctype html>
 <html lang="es-AR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nodo Matriz Agroecológico · Unquillo, Sierras Chicas</title>
-  <meta name="description" content="Nodo de consumo agroecológico en Unquillo, Sierras Chicas. Cada quincena juntamos los pedidos de las familias y los encargos a productoras y productores de la región.">
-  <meta property="og:title" content="Nodo Matriz Agroecológico">
-  <meta property="og:description" content="Alimentos agroecológicos del campo al barrio, con la menor cantidad de eslabones posible. Unquillo, Sierras Chicas.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nodomatriz.ar/">
-  <meta property="og:image" content="https://nodomatriz.ar/assets/logo-nodo-192.png">
-  <link rel="icon" href="assets/favicon-nodo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --suelo: #2C2418; --corteza: #4A3E2E; --tierra: #6B5D4F;
-      --oliva: #4A6B3A; --oliva-claro: #6E8E55; --salvia: #A8B894; --musgo: #3A5128;
-      --arcilla: #B07D62; --arcilla-osc: #8B5A40; --mostaza: #C49543;
-      --crema: #FAF6EE; --crema-osc: #F0E9D6; --leche: #FDFBF5;
-      --f-display: 'Fraunces', Georgia, serif;
-      --f-body: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
-      --r-card: 18px 22px 16px 24px;
-      --sombra: 0 4px 20px rgba(74, 62, 46, 0.10);
-      --ancho: 1080px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; background: var(--crema); color: var(--suelo);
-      font-family: var(--f-body); font-size: 17px; line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: var(--oliva); }
-    a:hover { color: var(--musgo); }
-    .envoltura { max-width: var(--ancho); margin: 0 auto; padding: 0 20px; }
-    h1, h2, h3 { font-family: var(--f-display); font-weight: 650; line-height: 1.12; color: var(--musgo); margin: 0 0 .5em; }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
-    h3 { font-size: 1.25rem; }
-    p { margin: 0 0 1em; }
-    .antetitulo { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--arcilla-osc); margin-bottom: .6rem; }
-    section { padding: 72px 0; }
-    section + section { border-top: 1px dashed rgba(74, 62, 46, .18); }
-
-    /* Barra superior */
-    .barra { position: sticky; top: 0; z-index: 10; background: rgba(250, 246, 238, .94); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(74, 62, 46, .08); }
-    .barra .envoltura { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
-    .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--musgo); }
-    .marca img { width: 38px; height: 38px; }
-    .marca span { font-family: var(--f-display); font-weight: 700; font-size: 1.15rem; }
-    .menu { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
-    .menu a { text-decoration: none; color: var(--corteza); font-weight: 700; font-size: .95rem; }
-    .menu a:hover { color: var(--oliva); }
-    .btn-menu { display: none; background: none; border: 1px solid rgba(74,62,46,.25); border-radius: 999px; padding: 6px 14px; font: inherit; font-weight: 700; color: var(--corteza); cursor: pointer; }
-    @media (max-width: 820px) {
-      .btn-menu { display: block; }
-      .menu { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--leche); border-bottom: 1px solid rgba(74,62,46,.12); box-shadow: var(--sombra); }
-      .menu.abierto { display: flex; }
-      .menu a { display: block; padding: 14px 20px; }
-    }
-
-    /* Portada */
-    .portada { padding: 64px 0 56px; }
-    .portada .hero { display: grid; grid-template-columns: 1.3fr .9fr; gap: 48px; align-items: center; }
-    .portada h1 { font-size: clamp(2.3rem, 6vw, 3.8rem); letter-spacing: -.01em; }
-    .portada .bajada { font-size: 1.2rem; color: var(--corteza); max-width: 38em; }
-    .acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 2px solid var(--musgo); }
-    .btn-lleno { background: var(--musgo); color: var(--crema); }
-    .btn-lleno:hover { background: var(--oliva); border-color: var(--oliva); color: var(--crema); }
-    .btn-borde { color: var(--musgo); }
-    .btn-borde:hover { background: var(--crema-osc); }
-    .sello { background: var(--leche); border-radius: 62% 38% 55% 45% / 50% 60% 40% 50%; padding: 48px; box-shadow: var(--sombra); aspect-ratio: 1; display: grid; place-items: center; }
-    .sello img { width: 70%; }
-    @media (max-width: 820px) {
-      .portada .hero { grid-template-columns: 1fr; gap: 28px; }
-      .sello { max-width: 240px; padding: 32px; order: -1; }
-    }
-
-    /* Datos rápidos */
-    .datos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
-    .dato { background: var(--leche); border-radius: var(--r-card); padding: 18px 20px; box-shadow: 0 2px 8px rgba(74,62,46,.06); }
-    .dato strong { display: block; font-family: var(--f-display); font-size: 1.5rem; color: var(--oliva); }
-    .dato span { color: var(--tierra); font-size: .95rem; }
-    @media (max-width: 820px) { .datos { grid-template-columns: 1fr 1fr; } }
-
-    /* Proceso */
-    .pasos { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: paso; }
-    .pasos li { background: var(--leche); border-radius: var(--r-card); padding: 24px 22px 22px; position: relative; box-shadow: 0 2px 8px rgba(74,62,46,.06); counter-increment: paso; }
-    .pasos li::before { content: counter(paso); position: absolute; top: -14px; left: 20px; width: 32px; height: 32px; border-radius: 50%; background: var(--arcilla); color: var(--leche); font-family: var(--f-display); font-weight: 700; display: grid; place-items: center; }
-    .pasos h3 { margin-top: 8px; }
-    .pasos p { color: var(--corteza); margin: 0; }
-    @media (max-width: 900px) { .pasos { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .pasos { grid-template-columns: 1fr; } }
-
-    /* Historia */
-    .dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .cita { font-family: var(--f-display); font-size: 1.45rem; line-height: 1.35; color: var(--corteza); border-left: 4px solid var(--mostaza); padding: 4px 0 4px 22px; margin: 0 0 24px; font-style: italic; }
-    .aporte { background: var(--crema-osc); border-radius: var(--r-card); padding: 26px; }
-    .aporte h3 { color: var(--arcilla-osc); }
-    @media (max-width: 820px) { .dos-col { grid-template-columns: 1fr; gap: 28px; } }
-
-    /* Preguntas */
-    .preguntas { margin-top: 28px; display: grid; gap: 10px; max-width: 820px; }
-    details { background: var(--leche); border-radius: 14px; padding: 0 20px; box-shadow: 0 2px 8px rgba(74,62,46,.05); }
-    summary { cursor: pointer; list-style: none; padding: 18px 0; font-weight: 700; color: var(--suelo); display: flex; justify-content: space-between; gap: 16px; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: '+'; font-family: var(--f-display); font-size: 1.4rem; line-height: 1; color: var(--oliva); }
-    details[open] summary::after { content: '–'; }
-    details p { color: var(--corteza); padding-bottom: 6px; }
-
-    /* Fotos */
-    .galeria { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
-    .galeria figure { margin: 0; background: var(--leche); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(74,62,46,.06); }
-    .galeria img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-    .galeria figcaption { padding: 10px 14px 12px; font-size: .92rem; color: var(--tierra); }
-    .vacio { margin-top: 24px; padding: 28px; border: 2px dashed rgba(74,62,46,.18); border-radius: var(--r-card); color: var(--tierra); text-align: center; }
-
-    /* Novedades */
-    .novedades { margin-top: 28px; display: grid; gap: 16px; max-width: 820px; }
-    .novedad { background: var(--leche); border-radius: var(--r-card); padding: 22px 24px; box-shadow: 0 2px 8px rgba(74,62,46,.06); }
-    .novedad time { font-size: .85rem; font-weight: 700; color: var(--arcilla-osc); letter-spacing: .04em; text-transform: uppercase; }
-    .novedad h3 { margin: 6px 0 8px; }
-    .novedad p { color: var(--corteza); margin: 0; }
-    .novedad p + p { margin-top: .7em; }
-    .ver-mas { margin-top: 16px; background: none; border: 2px solid var(--musgo); color: var(--musgo); border-radius: 999px; padding: 10px 20px; font: inherit; font-weight: 700; cursor: pointer; }
-
-    /* Contacto */
-    .contacto { background: var(--musgo); color: var(--crema); }
-    .contacto h2 { color: var(--crema); }
-    .contacto p { color: #E7E1D2; max-width: 40em; }
-    .contacto .btn-lleno { background: var(--crema); color: var(--musgo); border-color: var(--crema); }
-    .contacto .btn-lleno:hover { background: var(--crema-osc); }
-    .contacto .btn-borde { color: var(--crema); border-color: var(--crema); }
-    .contacto .btn-borde:hover { background: rgba(250,246,238,.1); }
-    footer { background: var(--suelo); color: #BDB4A4; font-size: .9rem; padding: 28px 0; }
-    footer .envoltura { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-    footer a { color: #D9D1C1; }
-    [hidden] { display: none !important; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nodo Matriz Agroecológico · Unquillo, Sierras Chicas</title>
+<meta name="description" content="Nodo de consumo agroecológico en Unquillo, Sierras Chicas. Cada quincena reunimos lo que ofrecen lxs productorxs y proveedorxs agroecológicxs de la zona y lo compartimos en un formulario.">
+<meta property="og:title" content="Nodo Matriz Agroecológico">
+<meta property="og:description" content="Alimentemos nuestro alimento. Un nodo de consumo agroecológico en Unquillo, Sierras Chicas.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nodomatriz.ar/">
+<meta property="og:image" content="https://nodomatriz.ar/fotos/zanahorias-manojo.jpg">
+<link rel="icon" href="assets/favicon-nodo.png">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-  <header class="barra">
-    <div class="envoltura">
-      <a class="marca" href="#inicio"><img src="assets/logo-nodo-192.png" alt=""><span>Nodo Matriz</span></a>
-      <button class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
-      <ul class="menu" id="menu">
-        <li><a href="#como-funciona">Cómo funciona</a></li>
-        <li><a href="#quienes-somos">Quiénes somos</a></li>
-        <li><a href="#preguntas">Preguntas</a></li>
-        <li><a href="#fotos">Fotos</a></li>
-        <li><a href="#novedades">Novedades</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+<!-- Dibujos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="llanten" viewBox="0 0 60 200">
+    <path d="M30 196C30 150 30 90 30 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30 150C8 120 4 70 30 8C56 70 52 120 30 150Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M30 140C22 110 21 70 30 22M30 140C38 110 39 70 30 22" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+  </symbol>
+  <symbol id="espiga" viewBox="0 0 40 200">
+    <path d="M20 198C21 150 19 110 20 70" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M20 70c-5-4-5-12 0-16c5 4 5 12 0 16zm0-14c-5-4-5-12 0-16c5 4 5 12 0 16zm0-14c-5-4-5-12 0-16c5 4 5 12 0 16zm0-14c-4-3-4-9 0-12c4 3 4 9 0 12z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  </symbol>
+  <symbol id="hoja" viewBox="0 0 64 64">
+    <path d="M10 54C10 28 26 10 54 10C54 38 36 54 10 54Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M10 54L40 24M22 42v-9M30 34v-9M22 42h9M30 34h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="semilla" viewBox="0 0 64 64">
+    <path d="M32 8C46 18 50 38 32 56C14 38 18 18 32 8Z" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <path d="M32 16C28 28 28 40 32 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="frasco" viewBox="0 0 64 64">
+    <path d="M22 8h20v8H22zM20 16h24c4 0 6 4 6 8v28c0 4-3 6-6 6H20c-3 0-6-2-6-6V24c0-4 2-8 6-8z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M14 32h36M24 42c3 3 13 3 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="cajon" viewBox="0 0 64 64">
+    <path d="M6 24h52v30H6zM6 34h52M6 44h52M14 24v30M50 24v30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M18 24c0-8 6-14 10-14M30 24c2-8 8-12 14-12M42 24c0-5 3-9 7-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="manos" viewBox="0 0 64 64">
+    <path d="M8 40c8-2 14 2 20 6h12c3 0 3 5 0 5H30M8 52c10 0 18 4 26 4c6 0 16-8 22-14c3-3-1-7-4-5l-10 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38 8c-6 0-9 5-9 9c0 6 9 13 9 13s9-7 9-13c0-4-3-9-9-9z" fill="none" stroke="currentColor" stroke-width="2.2"/>
+  </symbol>
+  <symbol id="flecha" viewBox="0 0 24 24">
+    <path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- ============ BARRA ============ -->
+<header class="barra" id="inicio">
+  <div class="barra-in">
+    <a class="marca" href="#inicio" aria-label="Nodo Matriz, inicio">
+      <img class="marca-logo" src="assets/logo-musgo.png" alt="" width="36" height="36">
+      <span class="marca-texto">
+        <span class="marca-nombre"><span class="fino">NODO</span> <b>MATRIZ</b></span>
+        <span class="marca-lugar">SIERRAS CHICAS</span>
+      </span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M1 1h16M1 6h16M1 11h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span>Menú</span>
+    </button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#lo-que-nos-mueve">Lo que nos mueve</a>
+      <a href="#sumate">Sumate</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ============ 1 · PORTADA ============ -->
+<section class="portada">
+  <figure class="portada-foto">
+    <img src="fotos/zanahorias-manojo.jpg" alt="Atados de zanahorias con sus hojas, recién llegados al galpón" width="1200" height="1600">
+    <svg class="dibujo dibujo-portada" aria-hidden="true"><use href="#llanten"/></svg>
+  </figure>
+  <div class="portada-texto">
+    <p class="antetitulo">Nodo de consumo agroecológico · Unquillo, Sierras Chicas</p>
+    <h1>Alimentemos nuestro alimento</h1>
+    <p class="bajada">Cada quincena reunimos lo que ofrecen todxs lxs productorxs y proveedorxs agroecológicxs de las Sierras Chicas y lo compartimos en un formulario, para que lxs vecinxs puedan sostener un consumo saludable, en resonancia con la tierra.</p>
+    <div class="botones">
+      <a class="btn btn-principal" href="#sumate">Quiero sumarme</a>
+      <a class="btn btn-secundario" href="#como-funciona">Cómo funciona</a>
     </div>
-  </header>
+    <ul class="datos">
+      <li><b>Desde 2021</b></li>
+      <li><b>Cada 15 días</b></li>
+      <li><b>Productorxs cercanxs</b></li>
+      <li><b>Hecho entre muchas manos</b></li>
+    </ul>
+  </div>
+</section>
 
-  <main id="inicio">
-    <section class="portada">
-      <div class="envoltura hero">
-        <div>
-          <p class="antetitulo">Nodo de consumo agroecológico · Unquillo, Sierras Chicas</p>
-          <h1>Alimento soberano, del campo al barrio.</h1>
-          <p class="bajada">Cada quincena juntamos los pedidos de las familias y los encargos a productoras y
-            productores agroecológicos de la región. Se produce y se trae lo que se pidió, con la menor cantidad
-            de eslabones posible y al precio más justo que logramos.</p>
-          <div class="acciones">
-            <a class="btn btn-lleno" href="#como-funciona">Cómo hacer un pedido</a>
-            <a class="btn btn-borde" href="#contacto" data-sumate>Sumate a la red</a>
-          </div>
+<!-- ============ 2 · CÓMO FUNCIONA ============ -->
+<section class="seccion" id="como-funciona">
+  <div class="wrap">
+    <p class="sello">Cómo funciona</p>
+    <h2>Una quincena en el Nodo</h2>
+    <ol class="pasos">
+      <li><span class="num">01</span><div><h3>Lo que hay esta quincena</h3><p>Cada 15 días, lxs productorxs nos cuentan lo que ofrecen a la comunidad, con sus cantidades y precios.</p></div></li>
+      <li><span class="num">02</span><div><h3>Tu pedido</h3><p>Organizamos esa información en un formulario para que encuentres lo que resuelve o mejora tu alimentación, o algo que te tiente probar por primera vez. Hacés tu pedido y nos llega en el momento.</p></div></li>
+      <li><span class="num">03</span><div><h3>El encargo colectivo</h3><p>Le encargamos a cada productorx y proveedorx lo que pidió cada vecinx.</p></div></li>
+      <li><span class="num">04</span><div><h3>El galpón</h3><p>Recibimos, fraccionamos y armamos cada cajón, y lo dejamos listo para la entrega.</p></div></li>
+      <li><span class="num">05</span><div><h3>La entrega</h3><p>Pasás a buscarlo el día y horario que elegiste en el formulario.</p></div></li>
+    </ol>
+  </div>
+  <div class="tira" aria-label="Fotos de una quincena">
+    <figure><img src="fotos/galpon-recepcion.jpg" alt="El galpón el día de recepción" loading="lazy"><figcaption>llegan los encargos</figcaption></figure>
+    <figure><img src="fotos/fraccionado-bolsas-papel.jpg" alt="Bolsas de papel listas para fraccionar" loading="lazy"><figcaption>fraccionamos</figcaption></figure>
+    <figure><img src="fotos/manzanas-balanza.jpg" alt="Manzanas en la balanza" loading="lazy"><figcaption>pesamos</figcaption></figure>
+    <figure><img src="fotos/cajon-hierbas-lechugas.jpg" alt="Un cajón armado con hierbas y lechugas" loading="lazy"><figcaption>tu cajón</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ 3 · LO QUE NOS MUEVE ============ -->
+<section class="seccion seccion-mueve" id="lo-que-nos-mueve">
+  <div class="wrap">
+    <p class="sello">Lo que nos mueve</p>
+    <h2>Nos organizamos para comer en red, cuidando a quien produce, a quien come y a la tierra</h2>
+    <ul class="ideas">
+      <li class="idea">
+        <svg class="idea-ico" aria-hidden="true"><use href="#manos"/></svg>
+        <h3>Entre todxs compramos a quienes producen</h3>
+        <p>Una compra colectiva y directa, sin intermediarixs, que reconoce el trabajo de cada productorx.</p>
+      </li>
+      <li class="idea con-foto">
+        <img src="fotos/legumbres-kraft.jpg" alt="Bolsas kraft con legumbres rotuladas a mano" loading="lazy">
+        <svg class="idea-ico" aria-hidden="true"><use href="#semilla"/></svg>
+        <h3>Pedimos lo justo</h3>
+        <p>Cada productorx recibe un encargo concreto, lo que la comunidad pidió. Así nada se pierde en el camino.</p>
+      </li>
+      <li class="idea con-foto">
+        <img src="fotos/huevos-maples.jpg" alt="Maples de huevos con papelitos kraft" loading="lazy">
+        <svg class="idea-ico" aria-hidden="true"><use href="#frasco"/></svg>
+        <h3>Lo que vuelve</h3>
+        <p>Los frascos, los cajones, las recetas y los saberes vuelven a la red.</p>
+      </li>
+      <li class="idea">
+        <svg class="idea-ico" aria-hidden="true"><use href="#cajon"/></svg>
+        <h3>Lo hacemos entre todxs</h3>
+        <p>Cada quincena es una obra colectiva, del primer pedido al último cajón.</p>
+      </li>
+      <li class="idea con-foto">
+        <img src="fotos/cebolla-morada-verdeo.jpg" alt="Cebolla de verdeo morada" loading="lazy">
+        <svg class="idea-ico" aria-hidden="true"><use href="#hoja"/></svg>
+        <h3>Cuidamos la tierra y a quien la trabaja</h3>
+        <p>Producción agroecológica, o en camino a serlo.</p>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ============ 4 · SUMATE ============ -->
+<section class="seccion seccion-sumate" id="sumate">
+  <div class="wrap">
+    <p class="sello">Sumate</p>
+    <h2>Hay lugar para vos</h2>
+    <p class="bajada">Empezá por donde quieras. Muchxs empiezan pidiendo y después se animan a más.</p>
+    <div class="caminos">
+      <article class="camino">
+        <svg class="camino-ico" aria-hidden="true"><use href="#cajon"/></svg>
+        <p class="camino-para">Para vecinxs de Sierras Chicas</p>
+        <h3>Hacer pedidos</h3>
+        <p>Te sumás al grupo de WhatsApp, pedís cuando abre la quincena y retirás en el galpón de Unquillo.</p>
+        <a class="btn btn-principal" id="btn-grupo" href="#contacto">Unirme al grupo</a>
+      </article>
+      <article class="camino">
+        <svg class="camino-ico" aria-hidden="true"><use href="#manos"/></svg>
+        <p class="camino-para">Para quienes quieren dar una mano sin ser parte de la equipa</p>
+        <h3>Ir más allá del pedido</h3>
+        <p>Contar el Nodo a otras familias, acercar productorxs, compartir recetas y saberes, acompañar una jornada en el galpón.</p>
+        <button class="btn btn-principal" type="button" data-abrir="form-mano">Quiero dar una mano</button>
+      </article>
+      <article class="camino">
+        <svg class="camino-ico" aria-hidden="true"><use href="#semilla"/></svg>
+        <p class="camino-para">Para productorxs</p>
+        <h3>Sumar tu producción</h3>
+        <p>Ponés un precio justo, conocés el encargo de la comunidad antes de elaborar o cosechar y recibís lo que corresponde por lo que entregaste.</p>
+        <div class="camino-fotos">
+          <img src="fotos/chucrut-la-ramona.jpg" alt="Frascos de chucrut de La Ramona" loading="lazy">
+          <img src="fotos/bebidas-apacheta.jpg" alt="Bebidas artesanales de Apacheta" loading="lazy">
+          <img src="fotos/harinas-organicas.jpg" alt="Harinas orgánicas" loading="lazy">
         </div>
-        <div class="sello"><img src="assets/logo-nodo-192.png" alt="Logo del Nodo Matriz Agroecológico"></div>
-      </div>
-      <div class="envoltura">
-        <div class="datos">
-          <div class="dato"><strong>2021</strong><span>en funcionamiento desde el solsticio de invierno</span></div>
-          <div class="dato"><strong>Quincenal</strong><span>una edición de pedidos cada dos semanas</span></div>
-          <div class="dato"><strong>Local</strong><span>productoras y productores del corredor serrano y la región</span></div>
-          <div class="dato"><strong>En red</strong><span>familias, productores y equipa organizados</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="como-funciona">
-      <div class="envoltura">
-        <p class="antetitulo">Una edición, paso a paso</p>
-        <h2>Cómo funciona</h2>
-        <p style="max-width:44em;color:var(--corteza)">No somos un almacén ni una tienda online: somos una red que se organiza para
-          comprar en conjunto. Cada edición sigue el mismo recorrido.</p>
-        <ol class="pasos">
-          <li><h3>La oferta de la quincena</h3><p>Cada productora y productor nos cuenta qué tiene disponible y a qué precio.
-            Con eso armamos el formulario de la edición.</p></li>
-          <li><h3>Hacés tu pedido</h3><p>Compartimos el formulario en el grupo. Elegís qué y cuánto, ves el total en el momento
-            y te llega el detalle por correo.</p></li>
-          <li><h3>Encargos exactos</h3><p>Al cerrar el formulario, cada productor recibe exactamente lo que se pidió. No se
-            produce de más ni se desperdicia.</p></li>
-          <li><h3>El galpón</h3><p>Recibimos los alimentos, fraccionamos lo que va por peso y armamos el cajón de cada familia.</p></li>
-          <li><h3>Retirás tu cajón</h3><p>Pasás a buscarlo el día y horario que elegiste. Los productos refrigerados se entregan
-            aparte, en el puesto de frío.</p></li>
-          <li><h3>Cuentas claras</h3><p>Si algo no llegó, te avisamos por correo con el total corregido. A cada productor se le
-            paga lo que efectivamente entregó.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="quienes-somos">
-      <div class="envoltura dos-col">
-        <div>
-          <p class="antetitulo">Nuestra historia</p>
-          <h2>Quiénes somos</h2>
-          <p class="cita">¿Podemos trazar una ruta del alimento soberano que llegue hasta el barrio, con la menor cantidad de
-            eslabones posibles y al precio más justo que se logre conseguir?</p>
-          <p>Con esa pregunta nació el Nodo Matriz, el 21 de julio de 2021, en el solsticio de invierno. La primera vez nos
-            juntamos entre 15 y 20 familias alrededor del alimento: sin balanza ni tablones, solo con la voluntad de
-            organizarnos. También era una forma de acceder a la producción agroecológica para quienes no podían llegar a las
-            ferias del corredor.</p>
-          <p>Hoy somos una red de familias, productoras, productores y una equipa que sostiene cada edición. Queremos que
-            quienes trabajan la tierra puedan hacerlo de manera más sostenible, y compartir la herramienta de logística,
-            gestión y educación ambiental que fuimos construyendo con otros territorios.</p>
-        </div>
-        <div class="aporte">
-          <h3>El aporte solidario</h3>
-          <p>Cada pedido suma un aporte solidario, mínimo del 15&nbsp;% del subtotal. Es lo que sostiene el funcionamiento del
-            Nodo: el galpón, la logística, el fraccionado y el trabajo de la equipa.</p>
-          <p style="margin:0">Si podés aportar más, el formulario te deja elegir otro porcentaje. El precio de los alimentos es
-            el que pone cada productor.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="preguntas">
-      <div class="envoltura">
-        <p class="antetitulo">Lo que más nos preguntan</p>
-        <h2>Preguntas frecuentes</h2>
-        <div class="preguntas">
-          <details><summary>¿Cómo hago un pedido?</summary>
-            <p>Cada quincena compartimos el link del formulario en el grupo de WhatsApp del Nodo. Elegís los productos y
-              las cantidades, completás tus datos y lo enviás. Te llega un correo con el detalle y el total a abonar.</p></details>
-          <details><summary>¿Cuándo abre y cierra el formulario?</summary>
-            <p>Cada edición tiene sus fechas y las anunciamos en el grupo. Habitualmente el formulario abre el fin de semana
-              y cierra el martes al mediodía. Después del cierre no se pueden sumar pedidos, porque ya se hicieron los
-              encargos a productores.</p></details>
-          <details><summary>¿Dónde y cuándo retiro mi pedido?</summary>
-            <p>En nuestro galpón, en Unquillo. En el formulario elegís el día de retiro entre los que ofrece esa edición, y
-              la ubicación exacta te llega junto con la confirmación del pedido.</p></details>
-          <details><summary>¿Cómo pago?</summary>
-            <p>Elegís la forma de pago en el formulario. Los datos para transferir llegan con el correo de confirmación.</p></details>
-          <details><summary>¿Qué pasa si un producto no llega?</summary>
-            <p>A veces una cosecha no alcanza o un productor no puede traer todo. En ese caso te escribimos antes del retiro
-              con el detalle de lo que cambió y el nuevo total: solo pagás lo que recibís.</p></details>
-          <details><summary>¿Puedo pedir medio kilo o fracciones?</summary>
-            <p>Sí, en los productos que lo permiten. El formulario te muestra las fracciones disponibles de cada uno
-              (por ejemplo ½ o ¼ kg) con su precio.</p></details>
-          <details><summary>¿Qué hago con frascos y cajones?</summary>
-            <p>Traelos cuando vengas a retirar. Los cajones de madera y muchos frascos vuelven a la red y nos son de gran
-              ayuda.</p></details>
-          <details><summary>¿Por qué hay un aporte solidario?</summary>
-            <p>Porque organizar cada edición es trabajo: recibir, fraccionar, armar, entregar y hacer las cuentas. El aporte
-              (mínimo 15&nbsp;%) sostiene ese trabajo y el espacio, sin cambiar el precio que recibe cada productor.</p></details>
-          <details><summary>Produzco de forma agroecológica, ¿cómo me sumo?</summary>
-            <p>Escribinos por correo contándonos qué producís, dónde y cómo. Te vamos a contar cómo es la carga de productos
-              cada quincena y los días de entrega en el galpón.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section id="fotos">
-      <div class="envoltura">
-        <p class="antetitulo">El Nodo en imágenes</p>
-        <h2>Fotos</h2>
-        <div class="galeria" id="galeria"></div>
-        <div class="vacio" id="galeria-vacia" hidden>Pronto vamos a compartir fotos del galpón, las ediciones y las
-          productoras y productores de la red.</div>
-      </div>
-    </section>
-
-    <section id="novedades">
-      <div class="envoltura">
-        <p class="antetitulo">Lo último</p>
-        <h2>Novedades</h2>
-        <div class="novedades" id="lista-novedades"></div>
-        <button class="ver-mas" id="ver-mas" type="button" hidden>Ver novedades anteriores</button>
-        <div class="vacio" id="novedades-vacia" hidden>Todavía no hay novedades publicadas.</div>
-      </div>
-    </section>
-
-    <section id="contacto" class="contacto">
-      <div class="envoltura">
-        <p class="antetitulo" style="color:var(--salvia)">Sumate</p>
-        <h2>Contacto</h2>
-        <p>Si querés hacer pedidos, sumarte como productora o productor, o simplemente conocernos, escribinos.</p>
-        <div class="acciones">
-          <a class="btn btn-lleno" id="btn-whatsapp" href="#" hidden>Unirme al grupo de WhatsApp</a>
-          <a class="btn btn-borde" id="btn-mail" href="mailto:nodo.matriz.agroeco@gmail.com">nodo.matriz.agroeco@gmail.com</a>
-          <a class="btn btn-borde" id="btn-instagram" href="#" hidden>Instagram</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="envoltura">
-      <span>Nodo Matriz Agroecológico · Unquillo, Sierras Chicas, Córdoba</span>
-      <a href="https://webapp.nodomatriz.ar/">Acceso equipa</a>
+        <button class="btn btn-principal" type="button" data-abrir="form-vender">Contarles qué produzco</button>
+      </article>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    (function () {
-      'use strict';
-      // ── Datos de contacto: completar acá (dejar '' para ocultar el botón) ──
-      var CONTACTO = {
-        whatsapp: '',    // link de invitación al grupo, ej.: 'https://chat.whatsapp.com/XXXXXXXX'
-        instagram: ''    // ej.: 'https://www.instagram.com/nodomatriz'
-      };
+<!-- Formularios cortos -->
+<dialog class="hoja" id="form-mano" aria-labelledby="form-mano-t">
+  <form method="dialog" class="form-corto">
+    <div class="hoja-cabeza">
+      <h3 id="form-mano-t">Quiero dar una mano</h3>
+      <button class="cerrar" value="cancelar" aria-label="Cerrar">×</button>
+    </div>
+    <label class="campo"><span>Nombre</span><input name="nombre" autocomplete="name" required></label>
+    <label class="campo"><span>WhatsApp o correo</span><input name="contacto" autocomplete="email" required></label>
+    <label class="campo"><span>Localidad</span><input name="localidad" placeholder="Unquillo, Mendiolaza, Río Ceballos…"></label>
+    <fieldset class="campo">
+      <legend>¿Cómo te gustaría sumarte?</legend>
+      <label class="opcion"><input type="checkbox" name="como" value="contar"> Contar el Nodo a otras familias</label>
+      <label class="opcion"><input type="checkbox" name="como" value="productorxs"> Acercar productorxs</label>
+      <label class="opcion"><input type="checkbox" name="como" value="recetas"> Compartir recetas y saberes</label>
+      <label class="opcion"><input type="checkbox" name="como" value="galpon"> Acompañar una jornada en el galpón</label>
+    </fieldset>
+    <fieldset class="campo">
+      <legend>¿Cada cuánto podrías?</legend>
+      <label class="opcion"><input type="radio" name="frecuencia" value="quincena"> Cada quincena</label>
+      <label class="opcion"><input type="radio" name="frecuencia" value="mes"> Una vez por mes</label>
+      <label class="opcion"><input type="radio" name="frecuencia" value="aveces"> De vez en cuando</label>
+    </fieldset>
+    <button class="btn btn-principal btn-ancho" value="enviar">Enviar</button>
+  </form>
+</dialog>
 
-      function $(id) { return document.getElementById(id); }
-      function esc(s) {
-        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-        });
-      }
-      function linkSeguro(u) { return /^https:\/\//i.test(String(u || '')) ? u : ''; }
+<dialog class="hoja" id="form-vender" aria-labelledby="form-vender-t">
+  <form method="dialog" class="form-corto">
+    <div class="hoja-cabeza">
+      <h3 id="form-vender-t">Contarles qué produzco</h3>
+      <button class="cerrar" value="cancelar" aria-label="Cerrar">×</button>
+    </div>
+    <label class="campo"><span>Nombre</span><input name="nombre" autocomplete="name" required></label>
+    <label class="campo"><span>Emprendimiento</span><input name="emprendimiento"></label>
+    <label class="campo"><span>WhatsApp o correo</span><input name="contacto" required></label>
+    <label class="campo"><span>¿Dónde producís?</span><input name="donde"></label>
+    <label class="campo"><span>¿Qué producís?</span><textarea name="que" rows="3"></textarea></label>
+    <fieldset class="campo">
+      <legend>¿Cómo producís?</legend>
+      <label class="opcion"><input type="radio" name="como" value="agroecologico"> Agroecológico</label>
+      <label class="opcion"><input type="radio" name="como" value="transicion"> En camino a serlo</label>
+      <label class="opcion"><input type="radio" name="como" value="elaborados"> Elaborados</label>
+    </fieldset>
+    <label class="campo"><span>¿En qué temporada?</span><input name="temporada" placeholder="Todo el año, otoño-invierno…"></label>
+    <label class="campo"><span>¿Cómo llegarías al galpón?</span><input name="llegada"></label>
+    <button class="btn btn-principal btn-ancho" value="enviar">Enviar</button>
+  </form>
+</dialog>
 
-      if (linkSeguro(CONTACTO.whatsapp)) { $('btn-whatsapp').href = CONTACTO.whatsapp; $('btn-whatsapp').hidden = false; }
-      if (linkSeguro(CONTACTO.instagram)) { $('btn-instagram').href = CONTACTO.instagram; $('btn-instagram').hidden = false; }
+<!-- ============ 5 · QUIÉNES SOMOS ============ -->
+<section class="seccion seccion-somos" id="quienes-somos">
+  <div class="wrap">
+    <svg class="dibujo-seccion" aria-hidden="true"><use href="#semilla"/></svg>
+    <p class="sello">Quiénes somos</p>
+    <h2>Empezamos con una pregunta</h2>
+    <blockquote class="cita">¿Podemos hacer que el alimento de las Sierras Chicas llegue al barrio con la menor cantidad de pasos posible y al precio más justo?</blockquote>
+    <p class="texto-largo">Así nació el Nodo Matriz, el 21 de julio de 2021, en el solsticio de invierno. La primera vez éramos entre 15 y 20 familias, sin balanza ni tablones, solo con ganas de organizarnos. Hoy somos una red de familias, productorxs y una equipa que sostiene cada quincena. Y queremos compartir lo que aprendimos con otros barrios.</p>
+    <p class="fecha-mano">21 · 07 · 2021</p>
+  </div>
+</section>
 
-      // Menú en celular
-      var btn = document.querySelector('.btn-menu'), menu = $('menu');
-      btn.addEventListener('click', function () {
-        var abierto = menu.classList.toggle('abierto');
-        btn.setAttribute('aria-expanded', abierto ? 'true' : 'false');
-      });
-      menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') { menu.classList.remove('abierto'); btn.setAttribute('aria-expanded', 'false'); } });
+<!-- ============ 6 · PREGUNTAS ============ -->
+<section class="seccion seccion-preguntas" id="preguntas">
+  <div class="wrap">
+    <p class="sello">Preguntas</p>
+    <h2>Lo que más nos preguntan</h2>
+    <div class="acordeon">
+      <details><summary>¿Cómo hago un pedido?</summary><p>Cada quincena compartimos el link del formulario en el grupo de WhatsApp del Nodo. Elegís qué y cuánto, completás tus datos y lo enviás. Te llega un correo con el detalle y el total.</p></details>
+      <details><summary>¿Cuándo abre y cierra el formulario?</summary><p>Cada edición tiene sus fechas y las anunciamos en el grupo. Habitualmente el formulario abre el fin de semana y cierra el martes al mediodía. Después del cierre no se pueden sumar pedidos, porque ya hicimos los encargos a lxs productorxs.</p></details>
+      <details><summary>¿Dónde y cuándo retiro mi pedido?</summary><p>En nuestro galpón, en Unquillo. En el formulario elegís el día de retiro entre los que propone esa edición, y la ubicación exacta te llega junto con la confirmación del pedido. Lo refrigerado se entrega aparte, en el puesto de frío.</p></details>
+      <details><summary>¿Cómo pago?</summary><p>Elegís la forma de pago en el formulario. Los datos para transferir llegan con el correo de confirmación.</p></details>
+      <details><summary>¿Qué pasa si algo no llega?</summary><p>A veces una cosecha no alcanza o unx productorx no puede traer todo. En ese caso te escribimos antes del retiro con el detalle de lo que cambió y el nuevo total: solo pagás lo que recibís.</p></details>
+      <details><summary>¿Puedo pedir medio kilo o fracciones?</summary><p>Sí, en lo que lo permite. El formulario te muestra las fracciones disponibles de cada alimento (por ejemplo ½ o ¼ kg) con su precio.</p></details>
+      <details><summary>¿Qué hago con frascos y cajones?</summary><p>Traelos cuando vengas a retirar. Los cajones de madera y muchos frascos vuelven a la red y nos son de gran ayuda.</p></details>
+      <details><summary>¿Por qué hay un aporte solidario?</summary><p>Porque organizar cada edición es trabajo: recibir, fraccionar, armar, entregar y hacer las cuentas. El aporte (mínimo 15&nbsp;%) sostiene ese trabajo y el espacio, sin cambiar lo que recibe cada productorx.</p></details>
+      <details><summary>¿Cómo puedo dar una mano?</summary><p>Contando el Nodo, acercando productorxs, compartiendo recetas o acompañando una jornada en el galpón. <a href="#sumate">Escribinos desde Sumate</a>.</p></details>
+      <details><summary>Produzco de forma agroecológica, ¿cómo me sumo?</summary><p>Contanos qué producís, dónde y cómo, desde <a href="#sumate">Sumar tu producción</a>. Te vamos a contar cómo es la carga de lo que ofrecés cada quincena y los días de entrega en el galpón.</p></details>
+    </div>
+  </div>
+</section>
 
-      function leer(url) {
-        return fetch(url + '?v=' + Date.now(), { cache: 'no-store' }).then(function (r) {
-          if (!r.ok) throw new Error(r.status);
-          return r.json();
-        });
-      }
+<!-- ============ 7 · FOTOS Y NOVEDADES ============ -->
+<section class="seccion seccion-fotos" id="fotos">
+  <div class="wrap">
+    <p class="sello">Fotos y novedades</p>
+    <h2>Así se ve una quincena</h2>
+  </div>
+  <div class="galeria" id="galeria"></div>
+  <div class="wrap"><p class="vacio" id="galeria-vacia" hidden>Pronto vamos a compartir fotos del galpón, las ediciones y lxs productorxs de la red.</p></div>
+  <div class="wrap">
+    <ul class="novedades" id="lista-novedades"></ul>
+    <button class="ver-mas" id="ver-mas" type="button" hidden>Ver novedades anteriores</button>
+    <p class="vacio" id="novedades-vacia" hidden>Todavía no hay novedades publicadas.</p>
+  </div>
+</section>
 
-      // Fotos: contenido/fotos.json → [{ "archivo": "galpon.jpg", "texto": "..." }]
-      leer('contenido/fotos.json').then(function (fotos) {
-        fotos = (Array.isArray(fotos) ? fotos : []).filter(function (f) { return f && f.archivo; });
-        if (!fotos.length) { $('galeria-vacia').hidden = false; return; }
-        $('galeria').innerHTML = fotos.map(function (f) {
-          var src = /^https:\/\//i.test(f.archivo) ? f.archivo : 'fotos/' + String(f.archivo).replace(/^\/+/, '');
-          return '<figure><img loading="lazy" src="' + esc(src) + '" alt="' + esc(f.texto || 'Foto del Nodo') + '">' +
-            (f.texto ? '<figcaption>' + esc(f.texto) + '</figcaption>' : '') + '</figure>';
-        }).join('');
-      }).catch(function () { $('galeria-vacia').hidden = false; });
+<!-- ============ 8 · CONTACTO ============ -->
+<section class="seccion seccion-contacto" id="contacto">
+  <div class="wrap">
+    <svg class="dibujo-seccion" aria-hidden="true"><use href="#frasco"/></svg>
+    <h2>Escribinos</h2>
+    <div class="correo">
+      <span id="correo-txt">nodo.matriz.agroeco@gmail.com</span>
+      <button class="btn btn-chico" type="button" data-copiar="correo-txt">Copiar</button>
+    </div>
+    <div class="botones">
+      <a class="btn btn-principal" id="btn-whatsapp" href="#" hidden>Unirme al grupo de WhatsApp</a>
+      <a class="btn btn-secundario" id="btn-instagram" href="#" hidden>Instagram</a>
+      <a class="btn btn-secundario" id="btn-experiencia" href="#" hidden>Contanos tu experiencia</a>
+    </div>
+  </div>
+</section>
 
-      // Novedades: contenido/novedades.json → [{ "fecha": "2026-09-30", "titulo": "...", "texto": "..." }]
-      var MOSTRAR = 3;
-      function fechaLinda(iso) {
-        var m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
-        if (!m) return esc(iso || '');
-        var d = new Date(+m[1], +m[2] - 1, +m[3]);
-        return new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
-      }
-      leer('contenido/novedades.json').then(function (lista) {
-        lista = (Array.isArray(lista) ? lista : []).filter(function (n) { return n && n.titulo; });
-        lista.sort(function (a, b) { return String(b.fecha || '').localeCompare(String(a.fecha || '')); });
-        if (!lista.length) { $('novedades-vacia').hidden = false; return; }
-        function pintar(n) {
-          $('lista-novedades').innerHTML = lista.slice(0, n).map(function (x) {
-            var parrafos = String(x.texto || '').split(/\n\s*\n/).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
-            return '<article class="novedad"><time datetime="' + esc(x.fecha) + '">' + fechaLinda(x.fecha) + '</time>' +
-              '<h3>' + esc(x.titulo) + '</h3>' + parrafos + '</article>';
-          }).join('');
-          $('ver-mas').hidden = lista.length <= n;
-        }
-        pintar(MOSTRAR);
-        $('ver-mas').addEventListener('click', function () { pintar(lista.length); });
-      }).catch(function () { $('novedades-vacia').hidden = false; });
-    })();
-  </script>
+</main>
+
+<!-- ============ PIE: cabecera reinterpretada ============ -->
+<footer class="pie">
+  <svg class="pie-hoja pie-hoja-1" aria-hidden="true"><use href="#llanten"/></svg>
+  <svg class="pie-hoja pie-hoja-2" aria-hidden="true"><use href="#espiga"/></svg>
+  <svg class="pie-hoja pie-hoja-3" aria-hidden="true"><use href="#llanten"/></svg>
+  <div class="pie-marca">
+    <img src="assets/logo-blanco.png" alt="" width="72" height="72">
+    <div class="pie-nombre">
+      <span class="pie-l1"><span class="fino">NODO</span> <b>MATRIZ</b></span>
+      <span class="pie-l2">AGROECOLÓGICO</span>
+      <span class="pie-l3">SIERRAS CHICAS</span>
+    </div>
+  </div>
+  <p class="pie-lugar">Nodo Matriz · Unquillo, Sierras Chicas, Córdoba</p>
+  <a class="pie-equipa" href="https://webapp.nodomatriz.ar/">Acceso equipa</a>
+</footer>
+
+<script>
+  // ── Datos de contacto: completar acá (dejar '' para ocultar el botón) ──
+  var CONTACTO = {
+    whatsapp: '',     // link de invitación al grupo, ej.: 'https://chat.whatsapp.com/XXXXXXXX'
+    instagram: '',    // ej.: 'https://www.instagram.com/nodomatriz'
+    experiencia: ''   // link a un formulario para contar experiencias (opcional)
+  };
+</script>
+<script src="app.js"></script>
 </body>
 </html>

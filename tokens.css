@@ -1,0 +1,65 @@
+/* Nodo Matriz · tokens compartidos: web (nodomatriz.ar) + formulario de pedidos
+   Estética: «Cuaderno de huerta». Base: los tokens del formulario, sin cambios de nombre ni valor.
+   Nuevos: --c-cabecera, --c-zanahoria, --c-remolacha y los tokens de tipografía, radio, sombra y espacio. */
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..800,0..100;1,9..144,400..800,0..100&family=Josefin+Sans:wght@300;600;700&display=swap');
+
+:root {
+  /* Fondos */
+  --c-crema: #FAF6EE;        /* papel manteca: secciones alternas */
+  --c-crema-osc: #F0E9D6;    /* bloques planos, chips */
+  --c-leche: #FDFBF5;        /* fondo principal y tarjetas */
+
+  /* Textos */
+  --c-suelo: #2C2418;        /* texto principal */
+  --c-corteza: #4A3E2E;      /* texto secundario */
+  --c-tierra: #6B5D4F;       /* notas, ayudas */
+
+  /* Marca */
+  --c-cabecera: #99683F;     /* nuevo · banda tierra de la cabecera; anotaciones a mano */
+
+  /* Verdes */
+  --c-musgo: #3A5128;        /* títulos */
+  --c-oliva: #4A6B3A;        /* botones */
+  --c-oliva-claro: #6E8E55;
+  --c-salvia: #A8B894;       /* bordes, líneas punteadas, grilla de puntos */
+
+  /* Cálidos */
+  --c-arcilla: #B07D62;
+  --c-arcilla-oscuro: #8B5A40;
+  --c-mostaza: #C49543;
+  --c-zanahoria: #C8581F;    /* nuevo · único acento fuerte: aporte solidario, foco */
+  --c-remolacha: #7A2338;    /* nuevo · bordó de los maples, uso puntual */
+
+  /* Estados */
+  --c-rojo: #A6402B;         /* errores */
+  --c-verde-ok: #5B7A3A;     /* confirmaciones */
+
+  /* Tipografías */
+  --f-titulo: 'Fraunces', Georgia, serif;       /* con font-variation-settings: 'SOFT' 100, 'opsz' 144 */
+  --f-texto: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --f-mano: 'Caveat', cursive;                   /* anotaciones al margen, pies de foto */
+  --f-marca: 'Josefin Sans', sans-serif;         /* NODO MATRIZ / SIERRAS CHICAS */
+
+  --t-chico: 15px;
+  --t-base: 18px;            /* nunca menos de 17 px para texto corrido */
+  --t-h2: 34px;              /* 52px en escritorio */
+  --t-h1: 52px;              /* 84px en escritorio */
+
+  /* Radios */
+  --r-tarjeta: 18px 22px 16px 24px;    /* orgánico asimétrico, igual que el formulario */
+  --r-foto: 40px 120px 36px 90px;      /* foto de portada */
+  --r-campo: 12px;
+  --r-pildora: 999px;
+
+  /* Sombras: el cuaderno no usa sombras, solo bordes y bloques planos */
+  --s-ninguna: none;
+  --borde: 2px solid var(--c-salvia);
+
+  /* Papel: grilla de puntos sutil sobre --c-leche */
+  --papel: radial-gradient(color-mix(in srgb, var(--c-salvia) 45%, transparent) 1px, transparent 1.2px) 0 0 / 26px 26px;
+
+  /* Espacios */
+  --e-gutter: 16px;          /* margen lateral mínimo en celular */
+  --e-seccion: 64px;         /* 112px en escritorio */
+}

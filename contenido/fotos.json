@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "archivo": "remolachas-galpon.jpg",
+    "texto": "Atados de remolacha en el galpón"
+  },
+  {
+    "archivo": "limones.jpg",
+    "texto": "Limones"
+  },
+  {
+    "archivo": "ajos-verdes-acelga.jpg",
+    "texto": "Ajos verdes y acelga"
+  },
+  {
+    "archivo": "paltas.jpg",
+    "texto": "Cajón de paltas"
+  },
+  {
+    "archivo": "cebollas-bolsa.jpg",
+    "texto": "Cebollas en bolsa"
+  },
+  {
+    "archivo": "jengibre.jpg",
+    "texto": "Jengibre"
+  },
+  {
+    "archivo": "manzanas.jpg",
+    "texto": "Manzanas"
+  },
+  {
+    "archivo": "coliflor-galpon.jpg",
+    "texto": "Coliflores en el galpón"
+  }
+]
