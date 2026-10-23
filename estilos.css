@@ -22,7 +22,7 @@ a { color: var(--c-oliva); }
 .saltar { position: absolute; left: -999px; }
 .saltar:focus { left: 16px; top: 8px; z-index: 50; background: var(--c-leche); padding: 8px 12px; }
 
-.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 var(--e-gutter); }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--e-gutter); }
 .seccion { padding: var(--e-seccion) 0; scroll-margin-top: 48px; }
 .seccion h2 { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.015em; margin-bottom: 28px; max-width: 20ch; }
 .bajada { font-size: 19px; line-height: 1.5; color: var(--c-corteza); max-width: 38ch; }
@@ -49,7 +49,7 @@ a { color: var(--c-oliva); }
 
 /* ---------- Barra ---------- */
 .barra { position: sticky; top: 0; z-index: 20; }
-.barra-in { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 var(--e-gutter); max-width: 1440px; margin: 0 auto; position: relative; }
+.barra-in { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 var(--e-gutter); max-width: 1200px; margin: 0 auto; position: relative; }
 .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .marca-logo { width: 36px; height: 36px; }
 .marca-texto { display: flex; flex-direction: column; gap: 3px; font-family: var(--f-marca); }
@@ -190,13 +190,13 @@ a { color: var(--c-oliva); }
   .barra-in { height: 72px; }
   .marca-logo { width: 40px; height: 40px; }
 
-  .portada { display: grid; grid-template-columns: 1.05fr 1fr; min-height: min(calc(100vh - 72px), 860px); }
+  .portada { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1200px; margin: 0 auto; min-height: min(calc(100vh - 72px), 860px); }
   .portada-foto { order: 2; }
-  .portada-texto { order: 1; justify-content: center; padding: 64px 56px 64px max(40px, calc((100vw - 1120px) / 2 + 40px)); gap: 26px; }
+  .portada-texto { order: 1; justify-content: center; padding: 0; gap: 26px; }
   .bajada { font-size: 21px; }
 
   .pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 40px; }
-  .tira { max-width: 1440px; margin: 0 auto; padding: 56px var(--e-gutter) 0; overflow: visible; }
+  .tira { max-width: 1200px; margin: 0 auto; padding: 56px var(--e-gutter) 0; overflow: visible; }
   .tira figure { flex: 1; }
 
   .ideas { display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px 32px; }
@@ -208,10 +208,10 @@ a { color: var(--c-oliva); }
 
   .hoja { margin: auto; border-radius: var(--r-tarjeta); }
 
-  .galeria { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; max-width: 1440px; margin: 0 auto; padding: 0 var(--e-gutter); }
+  .galeria { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; max-width: 1200px; margin: 0 auto; padding: 0 var(--e-gutter); }
   .novedades { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 64px; }
 
-  .pie { padding: 64px max(40px, calc((100vw - 1120px) / 2)) 40px; }
+  .pie { padding: 64px max(40px, calc((100vw - 1200px) / 2 + 40px)) 40px; }
   .pie-marca img { width: 96px; height: 96px; }
 }
 
@@ -299,8 +299,8 @@ h3 { font-weight: 600; font-variation-settings: 'SOFT' 100, 'WONK' 0, 'opsz' 144
 .correo span { color: var(--c-musgo); }
 
 @media (min-width: 900px) {
-  .portada { align-items: center; padding: 48px 0 64px; }
-  .portada-foto { height: 640px; margin: 0 40px 0 0; }
+  .portada { align-items: center; padding: 48px var(--e-gutter) 64px; }
+  .portada-foto { height: 600px; margin: 0; }
   .dibujo-portada { left: -40px; top: auto; bottom: -40px; width: 90px; height: 300px; transform: rotate(14deg); }
   .pasos::before { display: none; }
   .pasos li { flex-direction: column; }
